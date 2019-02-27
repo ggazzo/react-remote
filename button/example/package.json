@@ -1,0 +1,22 @@
+{
+  "name": "button-example",
+  "homepage": "https://ggazzo.github.io/button",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "button": "link:..",
+    "expose-loader": "^0.7.5",
+    "prop-types": "^15.7.2",
+    "react": "^16.4.1",
+    "react-app-rewired": "^2.1.0",
+    "react-dom": "^16.8.3",
+    "react-scripts": "^1.1.4"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
