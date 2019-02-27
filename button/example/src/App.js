@@ -17,25 +17,32 @@ var loadRemoteComponent = async function ({name, src}) {
 
 export default class App extends Component {
   state = {
-    el: null
+    el: null,
+    err: null
   }
   constructor() {
     super();
-    setTimeout(() => {
-      loadRemoteComponent({
-        name: 'button',
-        src: 'http://localhost:8080/index.es.js'
-      }).then((Module) => this.setState({
-        el: <Module text='hello'/>
-      }));
+    setTimeout(async () => {
+      try {
+        await loadRemoteComponent({
+          name: 'button',
+          src: 'http://localhost:8080/index.es.js'
+        }).then((Module) => this.setState({
+          el: <Module text='hello'/>
+        }));
+
+      } catch(e) {
+        this.setState({
+          err: e
+        })
+      }
 
     }, 2000)
   }
   render () {
     return (
       <div>
-
-        { this.state.el ? this.state.el : 'loading'}
+        {this.state.err ? `error: ${ this.state.err }`: this.state.el ? this.state.el : 'loading'}
       </div>
     )
   }
